@@ -10962,3 +10962,72 @@ a.text-dark:focus {
   }
 }
 
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #f8fafc;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 900;
+  color: #6574cd;
+}
+
+#dropzone {
+  height: auto;
+}
+
+.text-primary {
+  color: #6574cd !important;
+}
+
+.navbar.bg-white {
+  background-color: #6574cd !important;
+}
+
+.navbar.bg-white a {
+  color: white !important;
+}
+
+.navbar-nav .dropdown-menu {
+  background: #6574cd;
+}
+
+.navbar-nav .dropdown-menu a:hover {
+  background: #6574cd;
+}
+
+.navbar.bg-white .navbar-brand {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+legend {
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  width: auto;
+}
+
+.btn-primary {
+  background-color: #6574cd;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background-color: #3f51c1;
+}
+
+.alert-primary {
+  background: transparent;
+  text-align: center;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #6574cd;
+}
+
