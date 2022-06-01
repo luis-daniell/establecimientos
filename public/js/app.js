@@ -64102,7 +64102,16 @@ document.addEventListener('DOMContentLoaded', function () {
       maxFiles: 10,
       required: true,
       acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
-      headers: {}
+      headers: {
+        'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
+      },
+      success: function success(file, respuesta) {
+        console.log(respuesta);
+      },
+      sending: function sending(file, xhr, formData) {
+        formData.append('uuid', document.querySelector('#uuid').value);
+        console.log('Enviando...');
+      }
     });
   }
 });
