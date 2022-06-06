@@ -24,7 +24,6 @@ class ImagenController extends Controller
         $imagenDB->id_establecimiento = $request['uuid'];
 
         $imagenDB->$ruta_imagen = $ruta_imagen;
-
         $imagenDB->save();
 
 
