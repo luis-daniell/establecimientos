@@ -21,14 +21,20 @@
         href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"
     />
 
-    <link
+    {{-- <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.css" integrity="sha512-0ns35ZLjozd6e3fJtuze7XJCQXMWmb4kPRbb+H/hacbqu6XfIX0ZRGt6SrmNmv5btrBpbzfdISSd8BAsXJ4t1Q=="
+        href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.css"
+        integrity="sha512-0ns35ZLjozd6e3fJtuze7XJCQXMWmb4kPRbb+H/hacbqu6XfIX0ZRGt6SrmNmv5btrBpbzfdISSd8BAsXJ4t1Q=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    /> --}}
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css"
+        integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     />
-
-
 
 
 @endsection
@@ -342,21 +348,43 @@
 
 
     <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.js"
-        integrity="sha512-Mn7ASMLjh+iTYruSWoq2nhoLJ/xcaCbCzFs0ZrltJn7ksDBx+e7r5TS7Ce5WH02jDr0w5CmGgklFoP9pejfCNA=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-        defer
-    ></script>
-
-
-    {{-- <script
         src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"
         integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
         defer
-    ></script> --}}
+    ></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+        if( document.querySelector('#dropzone') ){
+            Dropzone.autoDiscover = false;
+
+            const dropzone = new Dropzone('div#dropzone', {
+                url: '/imagenes/store',
+                dictDefaultMessage: 'Sube hasta 10 imágenes',
+                maxFiles:10,
+                required: true,
+                acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
+                },
+
+                success: function(file, respuesta) {
+                    console.log(respuesta);
+                },
+                sending: function(file, xhr, formData){
+                    formData.append('uuid', document.querySelector('#uuid').value)
+                    console.log('Enviando...');
+                }
+
+            });
+        }
+
+        })
+    </script>
+
 
 @endsection
 
