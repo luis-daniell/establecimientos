@@ -52,7 +52,12 @@
 
             <form
                 class="col-md-9 col-xs-12 card card-body"
+                action="{{ route('establecimiento.store') }}"
+                method="POST"
+                enctype="multipart/form-data"
+
             >
+                @csrf
 
                 <fieldset
                     class="border p-4"
@@ -101,6 +106,12 @@
 
                             @endforeach
                         </select>
+
+                        @error('categoria_id')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
 
                     </div>
 
@@ -183,6 +194,7 @@
                             class="form-control @error('direccion') is-invalid @enderror"
                             placeholder="Dirección"
                             value="{{ old('direccion') }}"
+                            name="direccion"
                         >
 
 
@@ -207,6 +219,7 @@
                             class="form-control @error('colonia') is-invalid @enderror"
                             placeholder="Colonia"
                             value="{{ old('colonia') }}"
+                            name="colonia"
                         >
 
 
@@ -355,35 +368,6 @@
         defer
     ></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-        if( document.querySelector('#dropzone') ){
-            Dropzone.autoDiscover = false;
-
-            const dropzone = new Dropzone('div#dropzone', {
-                url: '/imagenes/store',
-                dictDefaultMessage: 'Sube hasta 10 imágenes',
-                maxFiles:10,
-                required: true,
-                acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
-                },
-
-                success: function(file, respuesta) {
-                    console.log(respuesta);
-                },
-                sending: function(file, xhr, formData){
-                    formData.append('uuid', document.querySelector('#uuid').value)
-                    console.log('Enviando...');
-                }
-
-            });
-        }
-
-        })
-    </script>
 
 
 @endsection
