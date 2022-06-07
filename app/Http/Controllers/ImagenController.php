@@ -15,9 +15,11 @@ class ImagenController extends Controller
         //Leer la imagen
         $ruta_imagen = $request->file('file')->store('establecimientos', 'public');
 
+
         //Resize a la Imagen
         $imagen = Image::make(public_path("storage/{$ruta_imagen}"))->fit(800, 450);
         $imagen->save();
+
 
         //Almacenar con Modelo
         $imagenDB = new Imagen;
