@@ -32,4 +32,4 @@ const app = new Vue({
 });
 
 require('./mapa');
-require('./dropzone');
+//require('./dropzone');
