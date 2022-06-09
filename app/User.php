@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\Establecimiento;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -36,4 +37,14 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    //Relación 1:1 usuario y establecimiento
+    public function establecimiento()
+    {
+        return $this->hasOne(Establecimiento::class);
+    }
+
+
+
 }

@@ -49,6 +49,7 @@ class CreateEstablecimientosTable extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      *
