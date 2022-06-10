@@ -2,9 +2,7 @@
 
 
 @section('content')
-    <pagina-inicio
-
-    ></pagina-inicio>
+    <pagina-inicio></pagina-inicio>
 @endsection
 
 

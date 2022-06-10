@@ -1,11 +1,19 @@
 <template>
-    <h1>Desde Inicio</h1>
+
+    <div>
+        <router-view></router-view>
+    </div>
+
 </template>
 
 <script>
+
+    import store from '../store';
+
+
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
+
+        store
     }
+
 </script>
