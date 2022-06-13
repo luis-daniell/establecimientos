@@ -10,6 +10,7 @@ export default new Vuex.Store({
         cafes: [],
         restaurantes: [],
         hoteles: [],
+        establecimiento: {}
     },
     mutations: {
 
@@ -25,7 +26,23 @@ export default new Vuex.Store({
             state.hoteles = hoteles;
         },
 
+        AGREGAR_ESTABLECIMIENTO(state, establecimiento){
+            state.establecimiento = establecimiento
+        },
 
+    },
+
+    getters:{
+
+        obtenerEstablecimiento: state => {
+            return state.establecimiento
+        },
+        obtenerImagenes: state => {
+            return state.establecimiento.imagenes;
+        }
 
     }
+
+
+
 });

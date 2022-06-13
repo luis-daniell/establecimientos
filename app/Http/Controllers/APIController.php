@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imagen;
 use App\Categoria;
 use App\Establecimiento;
 use Illuminate\Http\Request;
@@ -25,5 +26,19 @@ class APIController extends Controller
 
         return response()->json($establecimientos);
     }
+
+
+    //Muestra un establecimiento en especifico
+    public function show(Establecimiento $establecimiento)
+    {
+
+        $imagenes = Imagen::where('id_establecimiento', $establecimiento->uuid)->get();
+
+        $establecimiento->imagenes = $imagenes;
+
+        return response()->json($establecimiento);
+
+    }
+
 
 }
