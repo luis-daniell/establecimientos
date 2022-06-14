@@ -7,7 +7,12 @@
         <ul class="row list-unstyled mt-4">
 
             <li class="col-md-4 mb-4" v-for="imagen in imagenes" v-bind:key="imagen.id">
-                <img class="img-fluid" :src='`/storage/${imagen.ruta_imagen}`'>
+
+                <a :href='`/storage/${imagen.ruta_imagen}`' data-lightbox="imagenes" data-title="Imagen Establecimiento">
+                    <img class="img-fluid" :src='`/storage/${imagen.ruta_imagen}`'>
+                </a>
+
+
 
             </li>
 
@@ -18,6 +23,7 @@
 
 <script>
 
+import Lightbox from 'lightbox2';
     export default {
 
         computed: {
@@ -33,13 +39,6 @@
 </script>
 
 
-
-
-
-
-
-
-
-
-
-
+<style scoped>
+    @import 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css';
+</style>

@@ -8,7 +8,7 @@
 
 
 
-            <div class="col-md-8">
+            <div class="col-md-8 order-2">
                 <img :src="`../storage/${establecimiento.imagen_principal}`" class="img-fluid" alt="imagen establecimiento">
                 <p class="mt-3">{{ establecimiento.descripcion }}</p>
 
@@ -19,7 +19,7 @@
 
 
 
-            <aside class="col-md-4 ">
+            <aside class="col-md-4 order-1">
 
 
                 <div>
