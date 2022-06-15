@@ -52,14 +52,16 @@ class EstablecimientoController extends Controller
 
         ]);
 
-
-
         //Guardar Imagen
         $ruta_imagen = $request['imagen_principal']->store('principales', 'public');
+
+
 
         //Resize a la imagen
         $img = Image::make( public_path("storage/{$ruta_imagen}"))->fit(800, 600);
         $img->save();
+
+
 
         //PRIMER METODO
         //AGREGAR EN ESTABLECIMIENTO EN EL FILLABLE EL USUARIO_ID
@@ -112,7 +114,8 @@ class EstablecimientoController extends Controller
     public function edit(Establecimiento $establecimiento)
     {
         //
-        return "Desde Edit";
+        $categorias = Categoria::all();
+        return view('establecimientos.edit', compact('categorias'));
     }
 
     /**
@@ -127,8 +130,10 @@ class EstablecimientoController extends Controller
         //
     }
 
+
     /**
      * Remove the specified resource from storage.
+     *
      *
      * @param  \App\Establecimiento  $establecimiento
      * @return \Illuminate\Http\Response

@@ -1,5 +1,3 @@
-
-
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -12,7 +10,8 @@ export default new Vuex.Store({
         hoteles: [],
         establecimiento: {},
         establecimientos: [],
-        categorias: []
+        categorias: [],
+        categoria: ''
     },
     mutations: {
 
@@ -38,6 +37,10 @@ export default new Vuex.Store({
 
         AGREGAR_CATEGORIAS(state, categorias){
             state.categorias = categorias
+        },
+
+        SELECCIONAR_CATEGORIA(state, categoria){
+            state.categoria = categoria;
         }
 
     },
@@ -57,12 +60,13 @@ export default new Vuex.Store({
 
         obtenerCategorias: state => {
             return state.categorias
+        },
+
+        obtenerCategoria: state => {
+            return state.categoria
         }
 
-
     }
-
-
 
 });
 

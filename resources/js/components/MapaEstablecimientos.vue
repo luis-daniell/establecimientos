@@ -15,6 +15,7 @@
                v-bind:key="establecimiento.id"
                :lat-lng="obtenerCoordenadas(establecimiento)"
                :icon="iconoEstablecimiento(establecimiento)"
+               @click="redireccionar(establecimiento.id)"
             >
 
                 <l-tooltip>
@@ -36,6 +37,7 @@
 
     import { latLng } from 'leaflet';
     import { LMap, LTileLayer, LMarker, LTooltip, LIcon } from 'vue2-leaflet';
+import CategoriaCafeVue from './CategoriaCafe.vue';
 
     export default {
 
@@ -96,12 +98,24 @@
                     iconUrl: `images/iconos/${slug}.png`,
                     iconSize: [40,50]
                 })
+           },
+
+           redireccionar(id){
+                this.$router.push({ name: 'establecimiento', params: { id } });
            }
 
 
         },
 
+        watch: {
+            "$store.state.categoria": function() {
 
+                axios.get('/api/' + this.$store.getters.obtenerCategoria)
+                    .then(respuesta => {
+                        this.$store.commit('AGREGAR_ESTABLECIMIENTOS', respuesta.data);
+                    })
+            }
+        }
 
 
     }
